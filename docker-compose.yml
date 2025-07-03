@@ -1,0 +1,12 @@
+version: '3.8'
+
+services:
+  api:
+    build: .
+    container_name: gestao_escolar_api
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/app
+    # O comando abaixo sobrescreve o CMD do Dockerfile para garantir que o --reload funcione corretamente com o volume.
+    command: uvicorn app:app --host 0.0.0.0 --port 8000 --reload
